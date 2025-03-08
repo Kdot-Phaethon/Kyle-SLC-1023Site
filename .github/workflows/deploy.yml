@@ -1,0 +1,17 @@
+name: Deploy Website
+on:
+  push:
+    branches:
+      - master # Runs the workflow when changes are pushed to the master branch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Uses a Linux-based virtual machine
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Fetches your repository files
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch where GitHub Pages serves the site
+          folder: . # Deploy everything from the repository root
